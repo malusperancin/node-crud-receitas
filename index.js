@@ -8,7 +8,7 @@ app.use(express.json())
 
 const receitasRouter = require('./routes/receitas.router')
 
-app.use("/api/v1/receitas", receitasRouter)
+app.use("/receitas", receitasRouter)
 
 const PORT = process.env.PORT || 5000
 
