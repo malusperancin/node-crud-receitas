@@ -29,9 +29,9 @@ const postsController = {
     },
     create: async (req, res) => {
         try {
-            const { title, content } = req.body
-            const sql = "insert into receitas (title, content) values (?, ?)"
-            const [rows, fields] = await pool.query(sql, [title, content])
+            const { titulo, ingredientes, procedimento, tipo, descricao } = req.body
+            const sql = "insert into receitas (titulo, ingredientes, procedimento, tipo, descricao) values (?, ?)"
+            const [rows, fields] = await pool.query(sql, [titulo, ingredientes, procedimento, tipo, descricao ])
             res.json({
                 data: rows
             })
@@ -44,10 +44,10 @@ const postsController = {
     },
     update: async (req, res) => {
         try {
-            const { title, content } = req.body
+            const { titulo, ingredientes, procedimento, tipo, descricao } = req.body
             const { id } = req.params
-            const sql = "update receitas set title = ?, content = ? where id = ?"
-            const [rows, fields] = await pool.query(sql, [title, content, id])
+            const sql = "update receitas set titulo = ?, ingredientes = ?, , procedimento = ? , tipo = ?, descricao = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [titulo, ingredientes, procedimento, tipo, descricao ])
             res.json({
                 data: rows
             })
